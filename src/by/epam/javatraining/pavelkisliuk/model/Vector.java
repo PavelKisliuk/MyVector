@@ -30,7 +30,7 @@ public class Vector {
 	public Vector(final Vector newVector)
 	{
 		this.dataArrayD = new double[newVector.size()];
-
+		this.fillArray(newVector);
 	}
 
 	private void fillArray()

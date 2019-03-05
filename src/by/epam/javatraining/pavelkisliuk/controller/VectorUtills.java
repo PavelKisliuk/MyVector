@@ -57,7 +57,7 @@ public class VectorUtills {
 
 	public static void reverse(Vector N)
 	{
-		for(int starting = 0, ending = N.size(); starting != (N.size() / 2); starting++, ending--) {
+		for(int starting = 0, ending = (N.size() - 1); starting != (N.size() / 2); starting++, ending--) {
 			double temp = N.getElement(starting);
 			N.setElement(N.getElement(ending), starting);
 			N.setElement(temp, ending);
@@ -149,16 +149,16 @@ public class VectorUtills {
 	public static void selectionSortDecrease(Vector N)
 	{
 		for(int i = 0; i < N.size(); i++) {
-			int minElementIndex = i;
-			double min = N.getElement(i);
+			int maxElementIndex = i;
+			double max = N.getElement(i);
 			for(int j = i; j < N.size(); j++) {
-				if(Double.compare(min, N.getElement(j)) < 0) {
-					min = N.getElement(j);
-					minElementIndex = j;
+				if(Double.compare(max, N.getElement(j)) < 0) {
+					max = N.getElement(j);
+					maxElementIndex = j;
 				}
 			}
-			N.setElement(N.getElement(i), minElementIndex);
-			N.setElement(min, i);
+			N.setElement(N.getElement(i), maxElementIndex);
+			N.setElement(max, i);
 		}
 	}
 
@@ -170,6 +170,43 @@ public class VectorUtills {
 				N.setElement(N.getElement(j), (j - 1));
 				N.setElement(temp, j);
 			}
+		}
+	}
+
+	public static void mergeSort(Vector N)
+	{
+		VectorUtills.mergeSort(N, (0), (N.size() - 1));
+	}
+
+	private static void mergeSort(Vector N, int startIndex, int endIndex)
+	{
+		if (startIndex < endIndex)
+		{
+			mergeSort(N, startIndex, ((startIndex + endIndex) / 2));
+			mergeSort(N, (((startIndex + endIndex) / 2) + 1), endIndex);
+			VectorUtills.merge(N, startIndex, endIndex);
+		}
+	}
+
+	private static void merge(Vector N, int startIndex, int endIndex)
+	{
+		Vector tempVector = new Vector(N);
+		int middle = (startIndex + endIndex) / 2;
+		int start = startIndex;
+		int end = middle + 1;
+		for(int i = startIndex; i <= endIndex; i++) {
+			if ((start <= middle) && ((end > endIndex) || (Double.compare(N.getElement(start), N.getElement(end)) < 0))) {
+				tempVector.setElement(N.getElement(start), i);
+				start++;
+			}
+			else {
+				tempVector.setElement(N.getElement(end), i);
+				end++;
+			}
+		}
+
+		for (int i = startIndex; i <= endIndex; i++) {
+			N.setElement(tempVector.getElement(i), i);
 		}
 	}
 }
