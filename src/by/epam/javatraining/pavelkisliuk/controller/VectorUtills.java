@@ -58,6 +58,56 @@ public class VectorUtills {
 		}
 	}
 
+	public static int linerSearch(Vector N, double soughtedElement)
+	{
+		for(int i = 0; i < N.size(); i++) {
+			if(Double.compare(N.getElement(i), soughtedElement) == 0) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+
+	public static int binarySearchIncrease(Vector N, double soughtedElement)
+	{
+		int start = 0;
+		int end = N.size() - 1;
+
+		while(start <= end) {
+			int middle = ((start + end) / 2);
+
+			if(Double.compare(N.getElement(middle), soughtedElement) == 0) {
+				return middle;
+			}else if(Double.compare(N.getElement(middle), soughtedElement) > 0) {
+				end = middle - 1;
+			}else {
+				start = middle + 1;
+			}
+		}
+		return -1;
+	}
+
+	public static int binarySearchDecrease(Vector N, double soughtedElement)
+	{
+		int start = 0;
+		int end = N.size() - 1;
+
+		while(start <= end) {
+			int middle = ((start + end) / 2);
+
+			if(Double.compare(N.getElement(middle), soughtedElement) == 0) {
+				return middle;
+			}else if(Double.compare(N.getElement(middle), soughtedElement) < 0) {
+				end = middle - 1;
+			}else {
+				start = middle + 1;
+			}
+		}
+		return -1;
+	}
+
+
 	public static void bubbleSortIncrease(Vector N) {
 		for (int pass = 0; pass < N.size(); pass++) {
 			for (int i = 0; i < (N.size() - 1); i++) {
