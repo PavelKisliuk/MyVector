@@ -24,12 +24,20 @@ public class VectorUtills {
 		return min;
 	}
 
-	public static double average(Vector N) {
+	public static double averageAriphmetic(Vector N) {
 		double average = 0.0;
 		for (int i = 0; i < N.size(); i++) {
 			average += N.getElement(i);
 		}
 		return (average / N.size());
+	}
+
+	public static double averageGeometric(Vector N) {
+		double average = 1.0;
+		for (int i = 0; i < N.size(); i++) {
+			average *= N.getElement(i);
+		}
+		return Math.pow(average, 1.0 / N.size());
 	}
 
 	public static boolean isSortedIncrease(Vector N) {
@@ -51,7 +59,7 @@ public class VectorUtills {
 	}
 
 	public static int findLocalMax(Vector N) {
-		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size();
+		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size(); // ->
 			 i++, neighborLeft++, neighborRight++) {
 			if ((i > 0) && (i < (N.size() - 1))) {
 				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0 &&
@@ -72,7 +80,7 @@ public class VectorUtills {
 	}
 
 	public static int findLocalMin(Vector N) {
-		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size();
+		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size(); // ->
 			 i++, neighborLeft++, neighborRight++) {
 			if ((i > 0) && (i < (N.size() - 1))) {
 				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0 &&
