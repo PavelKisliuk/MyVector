@@ -50,6 +50,48 @@ public class VectorUtills {
 		return true;
 	}
 
+	public static int findLocalMax(Vector N) {
+		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size();
+			 i++, neighborLeft++, neighborRight++) {
+			if ((i > 0) && (i < (N.size() - 1))) {
+				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0 &&
+						Double.compare(N.getElement(i), N.getElement(neighborRight)) > 0) {
+					return i;
+				}
+			} else if (i == 0) {
+				if (Double.compare(N.getElement(i), N.getElement(neighborRight)) > 0) {
+					return i;
+				}
+			} else {
+				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0) {
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
+
+	public static int findLocalMin(Vector N) {
+		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size();
+			 i++, neighborLeft++, neighborRight++) {
+			if ((i > 0) && (i < (N.size() - 1))) {
+				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0 &&
+						Double.compare(N.getElement(i), N.getElement(neighborRight)) < 0) {
+					return i;
+				}
+			} else if (i == 0) {
+				if (Double.compare(N.getElement(i), N.getElement(neighborRight)) < 0) {
+					return i;
+				}
+			} else {
+				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0) {
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
+
 	public static void reverse(Vector N) {
 		for (int starting = 0, ending = (N.size() - 1); starting != (N.size() / 2); starting++, ending--) {
 			double temp = N.getElement(starting);
@@ -58,10 +100,9 @@ public class VectorUtills {
 		}
 	}
 
-	public static int linerSearch(Vector N, double soughtedElement)
-	{
-		for(int i = 0; i < N.size(); i++) {
-			if(Double.compare(N.getElement(i), soughtedElement) == 0) {
+	public static int linerSearch(Vector N, double soughtedElement) {
+		for (int i = 0; i < N.size(); i++) {
+			if (Double.compare(N.getElement(i), soughtedElement) == 0) {
 				return i;
 			}
 		}
@@ -69,38 +110,36 @@ public class VectorUtills {
 	}
 
 
-	public static int binarySearchIncrease(Vector N, double soughtedElement)
-	{
+	public static int binarySearchIncrease(Vector N, double soughtedElement) {
 		int start = 0;
 		int end = N.size() - 1;
 
-		while(start <= end) {
+		while (start <= end) {
 			int middle = ((start + end) / 2);
 
-			if(Double.compare(N.getElement(middle), soughtedElement) == 0) {
+			if (Double.compare(N.getElement(middle), soughtedElement) == 0) {
 				return middle;
-			}else if(Double.compare(N.getElement(middle), soughtedElement) > 0) {
+			} else if (Double.compare(N.getElement(middle), soughtedElement) > 0) {
 				end = middle - 1;
-			}else {
+			} else {
 				start = middle + 1;
 			}
 		}
 		return -1;
 	}
 
-	public static int binarySearchDecrease(Vector N, double soughtedElement)
-	{
+	public static int binarySearchDecrease(Vector N, double soughtedElement) {
 		int start = 0;
 		int end = N.size() - 1;
 
-		while(start <= end) {
+		while (start <= end) {
 			int middle = ((start + end) / 2);
 
-			if(Double.compare(N.getElement(middle), soughtedElement) == 0) {
+			if (Double.compare(N.getElement(middle), soughtedElement) == 0) {
 				return middle;
-			}else if(Double.compare(N.getElement(middle), soughtedElement) < 0) {
+			} else if (Double.compare(N.getElement(middle), soughtedElement) < 0) {
 				end = middle - 1;
-			}else {
+			} else {
 				start = middle + 1;
 			}
 		}
@@ -280,8 +319,7 @@ public class VectorUtills {
 		}
 	}
 
-	public static void quickSortIncrease(Vector N)
-	{
+	public static void quickSortIncrease(Vector N) {
 		VectorUtills.quickSortIncrease(N, (0), (N.size() - 1));
 	}
 
@@ -308,16 +346,15 @@ public class VectorUtills {
 			}
 		}
 
-		if(startIndex < end) {
+		if (startIndex < end) {
 			VectorUtills.quickSortIncrease(N, startIndex, end);
 		}
-		if(start < endIndex) {
+		if (start < endIndex) {
 			VectorUtills.quickSortIncrease(N, start, endIndex);
 		}
 	}
 
-	public static void quickSortDecrease(Vector N)
-	{
+	public static void quickSortDecrease(Vector N) {
 		VectorUtills.quickSortDecrease(N, (0), (N.size() - 1));
 	}
 
@@ -344,10 +381,10 @@ public class VectorUtills {
 			}
 		}
 
-		if(startIndex < end) {
+		if (startIndex < end) {
 			VectorUtills.quickSortDecrease(N, startIndex, end);
 		}
-		if(start < endIndex) {
+		if (start < endIndex) {
 			VectorUtills.quickSortDecrease(N, start, endIndex);
 		}
 	}
