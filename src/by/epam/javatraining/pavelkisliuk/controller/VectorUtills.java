@@ -178,28 +178,25 @@ public class VectorUtills {
 		if (startIndex < endIndex) {
 			VectorUtills.mergeSortIncrease(N, startIndex, ((startIndex + endIndex) / 2));
 			VectorUtills.mergeSortIncrease(N, (((startIndex + endIndex) / 2) + 1), endIndex);
-			VectorUtills.mergeIncrease(N, startIndex, endIndex);
-		}
-	}
 
-	private static void mergeIncrease(Vector N, int startIndex, int endIndex) {
-		Vector tempVector = new Vector(N);
-		int middle = (startIndex + endIndex) / 2;
-		int start = startIndex;
-		int end = middle + 1;
-		for (int i = startIndex; i <= endIndex; i++) {
-			if ((start <= middle) && ((end > endIndex) ||
-					(Double.compare(N.getElement(start), N.getElement(end)) < 0))) {
-				tempVector.setElement(N.getElement(start), i);
-				start++;
-			} else {
-				tempVector.setElement(N.getElement(end), i);
-				end++;
+			Vector tempVector = new Vector(N);
+			int middle = (startIndex + endIndex) / 2;
+			int start = startIndex;
+			int end = middle + 1;
+			for (int i = startIndex; i <= endIndex; i++) {
+				if ((start <= middle) && ((end > endIndex) ||
+						(Double.compare(N.getElement(start), N.getElement(end)) < 0))) {
+					tempVector.setElement(N.getElement(start), i);
+					start++;
+				} else {
+					tempVector.setElement(N.getElement(end), i);
+					end++;
+				}
 			}
-		}
 
-		for (int i = startIndex; i <= endIndex; i++) {
-			N.setElement(tempVector.getElement(i), i);
+			for (int i = startIndex; i <= endIndex; i++) {
+				N.setElement(tempVector.getElement(i), i);
+			}
 		}
 	}
 
@@ -211,38 +208,97 @@ public class VectorUtills {
 		if (startIndex < endIndex) {
 			VectorUtills.mergeSortDecrease(N, startIndex, ((startIndex + endIndex) / 2));
 			VectorUtills.mergeSortDecrease(N, (((startIndex + endIndex) / 2) + 1), endIndex);
-			VectorUtills.mergeDecrease(N, startIndex, endIndex);
+
+			Vector tempVector = new Vector(N);
+			int middle = (startIndex + endIndex) / 2;
+			int start = startIndex;
+			int end = middle + 1;
+			for (int i = startIndex; i <= endIndex; i++) {
+				if ((start <= middle) && ((end > endIndex) ||
+						(Double.compare(N.getElement(start), N.getElement(end)) > 0))) {
+					tempVector.setElement(N.getElement(start), i);
+					start++;
+				} else {
+					tempVector.setElement(N.getElement(end), i);
+					end++;
+				}
+			}
+
+			for (int i = startIndex; i <= endIndex; i++) {
+				N.setElement(tempVector.getElement(i), i);
+			}
 		}
 	}
 
-	private static void mergeDecrease(Vector N, int startIndex, int endIndex) {
-		Vector tempVector = new Vector(N);
-		int middle = (startIndex + endIndex) / 2;
+	public static void quickSortIncrease(Vector N)
+	{
+		VectorUtills.quickSortIncrease(N, (0), (N.size() - 1));
+	}
+
+	private static void quickSortIncrease(Vector N, int startIndex, int endIndex) {
+		double element = N.getElement(((startIndex + endIndex) / 2));
+
 		int start = startIndex;
-		int end = middle + 1;
-		for (int i = startIndex; i <= endIndex; i++) {
-			if ((start <= middle) && ((end > endIndex) ||
-					(Double.compare(N.getElement(start), N.getElement(end)) > 0))) {
-				tempVector.setElement(N.getElement(start), i);
+		int end = endIndex;
+
+		while (start < end) {
+			while (Double.compare(N.getElement(start), element) < 0) {
 				start++;
-			} else {
-				tempVector.setElement(N.getElement(end), i);
-				end++;
+			}
+			while (Double.compare(N.getElement(end), element) > 0) {
+				end--;
+			}
+
+			if (start <= end) {
+				double temp = N.getElement(start);
+				N.setElement(N.getElement(end), start);
+				N.setElement(temp, end);
+				start++;
+				end--;
 			}
 		}
 
-		for (int i = startIndex; i <= endIndex; i++) {
-			N.setElement(tempVector.getElement(i), i);
+		if(startIndex < end) {
+			VectorUtills.quickSortIncrease(N, startIndex, end);
+		}
+		if(start < endIndex) {
+			VectorUtills.quickSortIncrease(N, start, endIndex);
 		}
 	}
 
-	public static void quickSortIncrease(Vector N)
+	public static void quickSortDecrease(Vector N)
 	{
-
+		VectorUtills.quickSortDecrease(N, (0), (N.size() - 1));
 	}
 
-	public static void quickSortIncrease(Vector N)
-	{
+	private static void quickSortDecrease(Vector N, int startIndex, int endIndex) {
+		double element = N.getElement(((startIndex + endIndex) / 2));
 
+		int start = startIndex;
+		int end = endIndex;
+
+		while (start < end) {
+			while (Double.compare(N.getElement(start), element) > 0) {
+				start++;
+			}
+			while (Double.compare(N.getElement(end), element) < 0) {
+				end--;
+			}
+
+			if (start <= end) {
+				double temp = N.getElement(start);
+				N.setElement(N.getElement(end), start);
+				N.setElement(temp, end);
+				start++;
+				end--;
+			}
+		}
+
+		if(startIndex < end) {
+			VectorUtills.quickSortDecrease(N, startIndex, end);
+		}
+		if(start < endIndex) {
+			VectorUtills.quickSortDecrease(N, start, endIndex);
+		}
 	}
 }
