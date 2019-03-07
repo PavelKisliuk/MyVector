@@ -1,6 +1,6 @@
-package by.epam.javatraining.pavelkisliuk.controller;
+package by.epam.javatraining.pavelkisliuk.model.logik;
 
-import by.epam.javatraining.pavelkisliuk.model.Vector;
+import by.epam.javatraining.pavelkisliuk.model.datas.Vector;
 
 public class VectorUtills {
 

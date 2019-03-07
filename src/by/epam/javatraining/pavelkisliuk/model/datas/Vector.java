@@ -1,4 +1,4 @@
-package by.epam.javatraining.pavelkisliuk.model;
+package by.epam.javatraining.pavelkisliuk.model.datas;
 
 import java.io.IOException;
 import java.nio.file.Paths;
