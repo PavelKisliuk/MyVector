@@ -88,4 +88,19 @@ public class Vector {
 	{
 		return this.dataArrayD.length;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Vector vector = (Vector) o;
+
+		return Arrays.equals(dataArrayD, vector.dataArrayD);
+	}
+
+	@Override
+	public int hashCode() {
+		return Arrays.hashCode(dataArrayD);
+	}
 }
