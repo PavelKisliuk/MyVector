@@ -24,7 +24,7 @@ public class VectorUtills {
 		return min;
 	}
 
-	public static double averageAriphmetic(Vector N) {
+	public static double averageArithmetic(Vector N) {
 		double average = 0.0;
 		for (int i = 0; i < N.size(); i++) {
 			average += N.getElement(i);
@@ -41,70 +41,84 @@ public class VectorUtills {
 	}
 
 	public static boolean isSortedIncrease(Vector N) {
-		for (int i = 0; i < (N.size() - 1); i++) {
-			if (Double.compare(N.getElement(i), N.getElement(i + 1)) > 0) {
-				return false;
+		if(N.size() > 1) {
+			for (int i = 0; i < (N.size() - 1); i++) {
+				if (Double.compare(N.getElement(i), N.getElement(i + 1)) > 0) {
+					return false;
+				}
 			}
 		}
 		return true;
 	}
 
 	public static boolean isSortedDecrease(Vector N) {
-		for (int i = 0; i < (N.size() - 1); i++) {
-			if (Double.compare(N.getElement(i), N.getElement(i + 1)) < 0) {
-				return false;
+		if(N.size() > 1) {
+			for (int i = 0; i < (N.size() - 1); i++) {
+				if (Double.compare(N.getElement(i), N.getElement(i + 1)) < 0) {
+					return false;
+				}
 			}
 		}
 		return true;
 	}
 
 	public static int findLocalMax(Vector N) {
-		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size(); // ->
-			 i++, neighborLeft++, neighborRight++) {
-			if ((i > 0) && (i < (N.size() - 1))) {
-				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0 &&
-						Double.compare(N.getElement(i), N.getElement(neighborRight)) > 0) {
-					return i;
-				}
-			} else if (i == 0) {
-				if (Double.compare(N.getElement(i), N.getElement(neighborRight)) > 0) {
-					return i;
-				}
-			} else {
-				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0) {
-					return i;
+		if(N.size() > 1) {
+			for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size(); // ->
+				 i++, neighborLeft++, neighborRight++) {
+				if ((i > 0) && (i < (N.size() - 1))) {
+					if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0 &&
+							Double.compare(N.getElement(i), N.getElement(neighborRight)) > 0) {
+						return i;
+					}
+				} else if (i == 0) {
+					if (Double.compare(N.getElement(i), N.getElement(neighborRight)) > 0) {
+						return i;
+					}
+				} else {
+					if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) > 0) {
+						return i;
+					}
 				}
 			}
+		}else {
+			return 0;
 		}
 		return -1;
 	}
 
 	public static int findLocalMin(Vector N) {
-		for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size(); // ->
-			 i++, neighborLeft++, neighborRight++) {
-			if ((i > 0) && (i < (N.size() - 1))) {
-				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0 &&
-						Double.compare(N.getElement(i), N.getElement(neighborRight)) < 0) {
-					return i;
-				}
-			} else if (i == 0) {
-				if (Double.compare(N.getElement(i), N.getElement(neighborRight)) < 0) {
-					return i;
-				}
-			} else {
-				if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0) {
-					return i;
+		if(N.size() > 1) {
+			for (int i = 0, neighborLeft = (i - 1), neighborRight = (i + 1); i < N.size(); // ->
+				 i++, neighborLeft++, neighborRight++) {
+				if ((i > 0) && (i < (N.size() - 1))) {
+					if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0 &&
+							Double.compare(N.getElement(i), N.getElement(neighborRight)) < 0) {
+						return i;
+					}
+				} else if (i == 0) {
+					if (Double.compare(N.getElement(i), N.getElement(neighborRight)) < 0) {
+						return i;
+					}
+				} else {
+					if (Double.compare(N.getElement(i), N.getElement(neighborLeft)) < 0) {
+						return i;
+					}
 				}
 			}
+		}else {
+			return 0;
 		}
 		return -1;
 	}
 
 	public static void reverse(Vector N) {
-		for (int starting = 0, ending = (N.size() - 1); starting != (N.size() / 2); starting++, ending--) {
-			double temp = N.getElement(starting);
-			N.setElement(N.getElement(ending), starting);
-			N.setElement(temp, ending);
+		if(N.size() > 1) {
+			for (int starting = 0, ending = (N.size() - 1); starting != (N.size() / 2); starting++, ending--) {
+				double temp = N.getElement(starting);
+				N.setElement(N.getElement(ending), starting);
+				N.setElement(temp, ending);
+			}
 		}
 	}
 
