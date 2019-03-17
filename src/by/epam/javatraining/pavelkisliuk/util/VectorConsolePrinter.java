@@ -28,7 +28,7 @@ package by.epam.javatraining.pavelkisliuk.util;
 import by.epam.javatraining.pavelkisliuk.model.datas.Vector;
 
 /**
- * The {@code VectorConsolePrinter} just inpyt Vector to console
+ * The {@code VectorConsolePrinter} just input Vector to console
  *
  * @author Kisliuk Pavel Sergeevich
  * @since 1.0
