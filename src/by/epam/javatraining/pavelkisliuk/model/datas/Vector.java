@@ -90,6 +90,15 @@ public class Vector {
 	}
 
 	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		for(double d : dataArrayD) {
+			str.append(String.valueOf(d + "\n"));
+		}
+		return str.toString();
+	}
+
+	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
