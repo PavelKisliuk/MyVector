@@ -45,7 +45,7 @@ public class VectorSorterIncrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void bubbleSort(Vector N) {
+	public void bubbleSort(final Vector N) {
 		for (int pass = 0; pass < N.size(); pass++) {
 			for (int i = 0; i < (N.size() - 1); i++) {
 				if (Double.compare(N.getElement(i), N.getElement(i + 1)) > 0) {
@@ -63,7 +63,7 @@ public class VectorSorterIncrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void enhancedBubbleSort(Vector N) {
+	public void enhancedBubbleSort(final Vector N) {
 		int passCounter = N.size();
 		for (int pass = 0; pass < N.size(); pass++) {
 			passCounter--;
@@ -88,7 +88,7 @@ public class VectorSorterIncrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void selectionSort(Vector N) {
+	public void selectionSort(final Vector N) {
 		for (int i = 0; i < N.size(); i++) {
 			int minElementIndex = i;
 			double min = N.getElement(i);
@@ -110,7 +110,7 @@ public class VectorSorterIncrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void insertionSort(Vector N) {
+	public void insertionSort(final Vector N) {
 		for (int i = 1; i < N.size(); i++) {
 			for (int j = i; (j > 0) && (Double.compare(N.getElement((j - 1)), N.getElement(j)) > 0); j--) {
 				double temp = N.getElement((j - 1));
@@ -126,11 +126,11 @@ public class VectorSorterIncrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void mergeSort(Vector N) {
+	public void mergeSort(final Vector N) {
 		mergeSort(N, (0), (N.size() - 1));
 	}
 
-	private void mergeSort(Vector N, int startIndex, int endIndex) {
+	private void mergeSort(final Vector N, int startIndex, int endIndex) {
 		if (startIndex < endIndex) {
 			mergeSort(N, startIndex, ((startIndex + endIndex) / 2));
 			mergeSort(N, (((startIndex + endIndex) / 2) + 1), endIndex);
@@ -162,11 +162,11 @@ public class VectorSorterIncrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void quickSort(Vector N) {
+	public void quickSort(final Vector N) {
 		quickSort(N, (0), (N.size() - 1));
 	}
 
-	private void quickSort(Vector N, int startIndex, int endIndex) {
+	private void quickSort(final Vector N, int startIndex, int endIndex) {
 		double element = N.getElement(((startIndex + endIndex) / 2));
 
 		int start = startIndex;

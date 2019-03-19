@@ -35,10 +35,14 @@ import by.epam.javatraining.pavelkisliuk.model.datas.Vector;
  */
 
 public class VectorConsolePrinter {
+	// Suppresses default constructor, ensuring non-instantiability.
+	private VectorConsolePrinter() {
+	}
+
 	/**
 	 * print {@param N} to console
 	 */
-	public static void print(Vector N){
+	public static void print(final Vector N) {
 		System.out.println(N);
 		System.out.println("//------------------------------");
 	}

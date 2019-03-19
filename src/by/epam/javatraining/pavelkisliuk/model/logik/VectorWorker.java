@@ -33,17 +33,20 @@ import by.epam.javatraining.pavelkisliuk.model.datas.Vector;
  * <p>This class provides several methods for specify operations
  * on elements in Vector.
  *
- * @author  Kisliuk Pavel Sergeevich
+ * @author Kisliuk Pavel Sergeevich
  * @since 1.0
  */
 
 public class VectorWorker {
+	// Suppresses default constructor, ensuring non-instantiability.
+	private VectorWorker() {
+	}
+
 	/**
-	 *
 	 * @param N is Vector of double elements
 	 * @return arithmetic average value
 	 */
-	public static double averageArithmetic(Vector N) {
+	public static double averageArithmetic(final Vector N) {
 		double average = 0.0;
 		for (int i = 0; i < N.size(); i++) {
 			average += N.getElement(i);
@@ -52,11 +55,10 @@ public class VectorWorker {
 	}
 
 	/**
-	 *
 	 * @param N is Vector of double elements
 	 * @return geometric average value
 	 */
-	public static double averageGeometric(Vector N) {
+	public static double averageGeometric(final Vector N) {
 		double average = 1.0;
 		for (int i = 0; i < N.size(); i++) {
 			average *= N.getElement(i);

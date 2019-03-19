@@ -38,11 +38,15 @@ import by.epam.javatraining.pavelkisliuk.model.datas.Vector;
  */
 
 public class VectorChecker {
+	// Suppresses default constructor, ensuring non-instantiability.
+	private VectorChecker() {
+	}
+
 	/**
 	 * @param N is Vector of double elements
 	 * @return {@code true} if vector sorted in ascending, otherwise false
 	 */
-	public static boolean isSortedIncrease(Vector N) {
+	public static boolean isSortedIncrease(final Vector N) {
 		if (N.size() > 1) {
 			for (int i = 0; i < (N.size() - 1); i++) {
 				if (Double.compare(N.getElement(i), N.getElement(i + 1)) > 0) {
@@ -57,7 +61,7 @@ public class VectorChecker {
 	 * @param N is Vector of double elements
 	 * @return {@code true} if vector sorted in descending, otherwise false
 	 */
-	public static boolean isSortedDecrease(Vector N) {
+	public static boolean isSortedDecrease(final Vector N) {
 		if (N.size() > 1) {
 			for (int i = 0; i < (N.size() - 1); i++) {
 				if (Double.compare(N.getElement(i), N.getElement(i + 1)) < 0) {
