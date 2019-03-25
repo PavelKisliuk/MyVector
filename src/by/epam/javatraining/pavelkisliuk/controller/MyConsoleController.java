@@ -7,6 +7,7 @@ import by.epam.javatraining.pavelkisliuk.model.logik.VectorFinder;
 import by.epam.javatraining.pavelkisliuk.model.logik.VectorSorterIncrease;
 import by.epam.javatraining.pavelkisliuk.model.logik.VectorWorker;
 import by.epam.javatraining.pavelkisliuk.util.VectorConsolePrinter;
+import by.epam.javatraining.pavelkisliuk.util.VectorInitializer;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,6 +67,7 @@ public class MyConsoleController {
 				mainTextArea.setScrollTop(Double.MAX_VALUE));
 
 		N = new Vector(VECTOR_SIZE);
+		VectorInitializer.init(N);
 		step = 0;
 		mainTextArea.appendText("Created Vector:\n");
 		mainTextArea.appendText(N.toString());
