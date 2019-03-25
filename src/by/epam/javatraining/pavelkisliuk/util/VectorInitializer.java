@@ -27,7 +27,10 @@ package by.epam.javatraining.pavelkisliuk.util;
 
 import by.epam.javatraining.pavelkisliuk.model.datas.Vector;
 
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.security.SecureRandom;
+import java.util.Scanner;
 
 /**
  * The {@code VectorInitializer} init Vector by values
@@ -54,7 +57,11 @@ public class VectorInitializer {
 	 *
 	 * @param N is Vector
 	 */
-	private void init(Vector N) {
+	public static void init(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+
 		SecureRandom secureRandom = new SecureRandom();
 		for (int i = 0; i < N.size(); i++) {
 			N.setElement(((secureRandom.nextDouble() *
@@ -65,39 +72,71 @@ public class VectorInitializer {
 	/**
 	 * Init {@param N} random values
 	 *
-	 * @param N           is Vector
-	 * @param LOWER_BOUND lower bound of random elements
-	 * @param UPPER_BOUND upper bound of random elements
+	 * @param N          is Vector
+	 * @param lowerBound lower bound of random elements
+	 * @param upperBound upper bound of random elements
 	 */
-	private void init(Vector N, final double LOWER_BOUND, final double UPPER_BOUND) {
+	public static void init(Vector N, double lowerBound, double upperBound) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		SecureRandom secureRandom = new SecureRandom();
 		for (int i = 0; i < N.size(); i++) {
 			N.setElement(((secureRandom.nextDouble() *
-					(UPPER_BOUND - LOWER_BOUND)) + LOWER_BOUND), i);
+					(upperBound - lowerBound)) + lowerBound), i);
 		}
 	}
 
 	/**
 	 * Init {@param N} random values
 	 *
-	 * @param N     is Vector
-	 * @param VALUE is specify element
+	 * @param N is Vector
+	 * @param v is specify element
 	 */
-	private void init(Vector N, final double VALUE) {
+	public static void init(Vector N, double v) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		for (int i = 0; i < N.size(); i++) {
-			N.setElement(VALUE, i);
+			N.setElement(v, i);
 		}
 	}
 
 	/**
 	 * Init {@param N} specify values
 	 *
-	 * @param N           is Vector
-	 * @param VALUE_ARRAY is array of double
+	 * @param N          is Vector
+	 * @param valueArray is array of double
 	 */
-	private void init(Vector N, final double... VALUE_ARRAY) {
+	public static void init(Vector N, double... valueArray) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		for (int i = 0; i < N.size(); i++) {
-			N.setElement(VALUE_ARRAY[i], i);
+			N.setElement(valueArray[i], i);
+		}
+	}
+
+	/**
+	 * fill from file
+	 *
+	 * @param path to file
+	 */
+	public static void init(Vector N, String path) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
+		try (Scanner input = new Scanner(Paths.get(path))) {
+			int i = 0;
+			while ((input.hasNext()) && (i < N.size())) {
+				N.setElement(input.nextDouble(), i);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

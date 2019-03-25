@@ -28,7 +28,7 @@ public class MyConsoleController {
 	@FXML
 	void nextStepOnAction(ActionEvent event) {
 		mainTextArea.appendText("-----------------------------------------\n");
-		switch (step) {
+		switch (step++) {
 			case 0:
 				mainTextArea.appendText(String.format("%s%f%n", "Max element is ", VectorFinder.max(N)));
 				break;
@@ -58,7 +58,6 @@ public class MyConsoleController {
 				nextStepButton.setDisable(true);
 				break;
 		}
-		step++;
 	}
 
 	@FXML

@@ -46,7 +46,11 @@ public class VectorWorker {
 	 * @param N is Vector of double elements
 	 * @return arithmetic average value
 	 */
-	public static double averageArithmetic(final Vector N) {
+	public static double averageArithmetic(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		double average = 0.0;
 		for (int i = 0; i < N.size(); i++) {
 			average += N.getElement(i);
@@ -58,7 +62,11 @@ public class VectorWorker {
 	 * @param N is Vector of double elements
 	 * @return geometric average value
 	 */
-	public static double averageGeometric(final Vector N) {
+	public static double averageGeometric(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		double average = 1.0;
 		for (int i = 0; i < N.size(); i++) {
 			average *= N.getElement(i);

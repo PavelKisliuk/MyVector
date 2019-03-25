@@ -42,49 +42,53 @@ public interface VectorSorter {
 	 *
 	 * @param N is Vector of double elements
 	 */
-	void bubbleSort(final Vector N);
+	void bubbleSort(Vector N);
 
 	/**
 	 * Sorting N by Bubble Sort with specify boost
 	 *
 	 * @param N is Vector of double elements
 	 */
-	void enhancedBubbleSort(final Vector N);
+	void enhancedBubbleSort(Vector N);
 
 	/**
 	 * Sorting N by Selection Sort
 	 *
 	 * @param N is Vector of double elements
 	 */
-	void selectionSort(final Vector N);
+	void selectionSort(Vector N);
 
 	/**
 	 * Sorting N by Insertion Sort
 	 *
 	 * @param N is Vector of double elements
 	 */
-	void insertionSort(final Vector N);
+	void insertionSort(Vector N);
 
 	/**
 	 * Sorting N by Merge Sort
 	 *
 	 * @param N is Vector of double elements
 	 */
-	void mergeSort(final Vector N);
+	void mergeSort(Vector N);
 
 	/**
 	 * Sorting N by Quick Sort
 	 *
 	 * @param N is Vector of double elements
 	 */
-	void quickSort(final Vector N);
+	void quickSort(Vector N);
 
 	/**
 	 * Reverse {@param N} elements
 	 *
 	 * @param N is Vector of double elements
 	 */
-	static void reverse(final Vector N) {
+	static void reverse(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		if (N.size() > 1) {
 			for (int starting = 0, ending = (N.size() - 1); starting != (N.size() / 2); starting++, ending--) {
 				double temp = N.getElement(starting);

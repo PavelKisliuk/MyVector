@@ -42,7 +42,11 @@ public class VectorConsolePrinter {
 	/**
 	 * print {@param N} to console
 	 */
-	public static void print(final Vector N) {
+	public static void print(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		System.out.println(N);
 		System.out.println("//------------------------------");
 	}

@@ -45,7 +45,11 @@ public class VectorSorterDecrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void bubbleSort(final Vector N) {
+	public void bubbleSort(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		for (int pass = 0; pass < N.size(); pass++) {
 			for (int i = 0; i < (N.size() - 1); i++) {
 				if (Double.compare(N.getElement(i), N.getElement(i + 1)) < 0) {
@@ -63,7 +67,11 @@ public class VectorSorterDecrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void enhancedBubbleSort(final Vector N) {
+	public void enhancedBubbleSort(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		int passCounter = N.size();
 		for (int pass = 0; pass < N.size(); pass++) {
 			passCounter--;
@@ -88,7 +96,11 @@ public class VectorSorterDecrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void selectionSort(final Vector N) {
+	public void selectionSort(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		for (int i = 0; i < N.size(); i++) {
 			int maxElementIndex = i;
 			double max = N.getElement(i);
@@ -110,7 +122,11 @@ public class VectorSorterDecrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void insertionSort(final Vector N) {
+	public void insertionSort(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		for (int i = 1; i < N.size(); i++) {
 			for (int j = i; (j > 0) && (Double.compare(N.getElement((j - 1)), N.getElement(j)) < 0); j--) {
 				double temp = N.getElement((j - 1));
@@ -126,11 +142,15 @@ public class VectorSorterDecrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void mergeSort(final Vector N) {
+	public void mergeSort(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		mergeSort(N, (0), (N.size() - 1));
 	}
 
-	private void mergeSort(final Vector N, int startIndex, int endIndex) {
+	private void mergeSort(Vector N, int startIndex, int endIndex) {
 		if (startIndex < endIndex) {
 			mergeSort(N, startIndex, ((startIndex + endIndex) / 2));
 			mergeSort(N, (((startIndex + endIndex) / 2) + 1), endIndex);
@@ -162,11 +182,15 @@ public class VectorSorterDecrease implements VectorSorter {
 	 * @param N is Vector of double elements
 	 */
 	@Override
-	public void quickSort(final Vector N) {
+	public void quickSort(Vector N) {
+		if (N == null) {
+			throw new NullPointerException();
+		}
+		//---------------------------------------------------------------------
 		quickSort(N, (0), (N.size() - 1));
 	}
 
-	private void quickSort(final Vector N, int startIndex, int endIndex) {
+	private void quickSort(Vector N, int startIndex, int endIndex) {
 		double element = N.getElement(((startIndex + endIndex) / 2));
 
 		int start = startIndex;
